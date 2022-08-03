@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_spesa_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/item_spesa_main_linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/item_spesa_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/placeholder"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/item_spesa_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NOME ALIMENTO"
+                android:textSize="@dimen/dimension_20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginBottom="5dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ultimo Prezzo:"
+                    android:textSize="@dimen/dimension_16sp"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/item_spesa_ultimo_prezzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00,00 €"
+                    android:textSize="@dimen/dimension_16sp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prezzo Medio:"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:textSize="@dimen/dimension_16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/item_spesa_prezzo_medio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00,00 €"
+                    android:textSize="@dimen/dimension_16sp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genere:"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:textSize="@dimen/dimension_16sp"
+                    />
+
+                <TextView
+                    android:id="@+id/item_spesa_genere"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GENERE"
+                    android:textSize="@dimen/dimension_16sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "638363317532",
+    "project_id": "appspesa-bad14",
+    "storage_bucket": "appspesa-bad14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638363317532:android:d90a47a4753f96afa736d9",
+        "android_client_info": {
+          "package_name": "com.example.appspesa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638363317532-ph9cjgqd64vvld15a0jdjhf5oo5ivigm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIQwS5itdZvNKewkJSzyehfhiANftfxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638363317532-ph9cjgqd64vvld15a0jdjhf5oo5ivigm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638363317532:android:dd485d1536415552a736d9",
+        "android_client_info": {
+          "package_name": "com.narde.appspesa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638363317532-ph9cjgqd64vvld15a0jdjhf5oo5ivigm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIQwS5itdZvNKewkJSzyehfhiANftfxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "638363317532-ph9cjgqd64vvld15a0jdjhf5oo5ivigm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

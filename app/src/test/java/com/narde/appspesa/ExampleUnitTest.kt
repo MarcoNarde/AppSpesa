@@ -1,4 +1,4 @@
-package com.example.appspesa
+package com.narde.appspesa
 
 import org.junit.Test
 

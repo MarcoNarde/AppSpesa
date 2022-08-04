@@ -1,12 +1,12 @@
-package com.example.appspesa.adapter
+package com.narde.appspesa.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appspesa.R
-import com.example.appspesa.model.Alimento
+import com.narde.appspesa.R
+import com.narde.appspesa.model.Alimento
 
 class ItemSpesaAdapter(private val items: ArrayList<Alimento>) : RecyclerView.Adapter<ItemSpesaAdapter.viewHolder>() {
     class viewHolder(view: View) : RecyclerView.ViewHolder(view) {

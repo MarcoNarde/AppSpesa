@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/marco/AndroidStudioProjects/AppSpesa/app/src/main/res/layout/activity_login.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/marco/AndroidStudioProjects/AppSpesa/app/src/main/res/layout/activity_main.xml" value="0.28940217391304346" />
         <entry key="..\:/Users/marco/AndroidStudioProjects/AppSpesa/app/src/main/res/layout/layout_item_spesa.xml" value="0.28306159420289856" />
+        <entry key="..\:/Users/marco/AndroidStudioProjects/AppSpesa/app/src/main/res/menu/menu_principale.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>

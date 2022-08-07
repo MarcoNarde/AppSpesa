@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener  {
                     }
                 }
 
-                prodotti.sortWith(compareBy({ it.nome }, { it.isComprato }))
+                prodotti.sortWith(compareBy({ it.isComprato }, { it.nome }))
 
                 adapter = ItemSpesaAdapter(prodotti, this@MainActivity)
 
@@ -128,10 +128,15 @@ class MainActivity : AppCompatActivity(), OnItemClickListener  {
         var itemAfter = prodotti[position]
         itemAfter.isComprato = !itemAfter.isComprato
 
+        //TODO: MODIFICARE NEL DB
+
         prodotti.remove(itemBefore)
         prodotti.add(itemAfter)
 
-        prodotti.sortWith(compareBy({ it.nome }, { it.isComprato }))
-        adapter.notifyDataSetChanged()
+        prodotti.sortWith(compareBy({ it.isComprato }, { it.nome }))
+
+        adapter = ItemSpesaAdapter(prodotti, this@MainActivity)
+
+        recycleviewSpesa.adapter = adapter
     }
 }

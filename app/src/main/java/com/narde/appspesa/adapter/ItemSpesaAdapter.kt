@@ -77,6 +77,12 @@ class ItemSpesaAdapter(private val items: ArrayList<Prodotto>, private val mOnIt
 
             notifyDataSetChanged()*/
         }
+        holder.cvMainLayout.setOnLongClickListener{
+            items.remove(prodotto)
+            //TODO: RIMUOVERE DA DATABASE
+            notifyDataSetChanged()
+            true
+        }
     }
 
     override fun getItemCount() = items.size

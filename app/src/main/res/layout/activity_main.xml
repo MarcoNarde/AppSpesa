@@ -18,4 +18,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_aggiungi_prodotto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/aggiungi_prodotto"
+        android:src="@drawable/baseline_add_white_36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_item_spesa"
+        app:layout_constraintEnd_toEndOf="@+id/rv_item_spesa"
+        app:backgroundTint="@color/primaryColor"
+        app:tint="@color/white"
+        android:scaleType="center"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

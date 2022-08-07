@@ -6,16 +6,35 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.narde.appspesa.`interface`.OnItemClickListener
 import com.narde.appspesa.adapter.ItemSpesaAdapter
-import com.narde.appspesa.model.Alimento
+import com.narde.appspesa.model.Prodotto
 
-class MainActivity : AppCompatActivity() {
+private const val TAG: String = "TEST"
+
+class MainActivity : AppCompatActivity(), OnItemClickListener  {
+    private lateinit var recycleviewSpesa: RecyclerView
+    private lateinit var fbAggiungiProdotto: FloatingActionButton
+
+    private lateinit var adapter: ItemSpesaAdapter
+
+    private lateinit var database: DatabaseReference
+    private lateinit var prodotti: ArrayList<Prodotto>
+    private var idProd : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,18 +42,59 @@ class MainActivity : AppCompatActivity() {
         //actionBar!!.title =
         supportActionBar!!.title = getString(R.string.lista_spesa)
 
-        val recycleviewSpesa = findViewById<RecyclerView>(R.id.rv_item_spesa)
+        database = Firebase.database.reference
+
+        recycleviewSpesa = findViewById(R.id.rv_item_spesa)
+        fbAggiungiProdotto = findViewById(R.id.fb_aggiungi_prodotto)
 
         recycleviewSpesa.layoutManager = LinearLayoutManager(this)
-        val data = ArrayList<Alimento>()
+        prodotti = ArrayList()
 
-        for (i in 1..20) {
-            data.add(Alimento("Item $i", i+10.0, i +10.0, "Alimentari", ""))
+        getProdottiData()
+
+        fbAggiungiProdotto.setOnClickListener {
+            writeNewProdotto()
         }
+    }
 
-        val adapter = ItemSpesaAdapter(data)
+    private fun writeNewProdotto() {
+        //val prodotto = Prodotto("Test", 1.0, 2.0, "Generico", "Test.png")
 
-        recycleviewSpesa.adapter = adapter
+        //database.child("Prodotti").child("Prod${idProd + 1}").setValue(prodotto)
+
+        startActivity(Intent(this, AggiungiProdottoActivity::class.java))
+    }
+
+    private fun getProdottiData() {
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                prodotti.clear()
+
+                val prods = dataSnapshot.children
+                if (prods != null) {
+                    //inserisco tutti i prodotti nel db
+                    for (p in prods){
+                        Log.w(TAG, p.getValue<Prodotto>()!!.nome)
+                        prodotti.add(p.getValue<Prodotto>()!!)
+                    }
+                }
+
+                prodotti.sortWith(compareBy({ it.nome }, { it.isComprato }))
+
+                adapter = ItemSpesaAdapter(prodotti, this@MainActivity)
+
+                recycleviewSpesa.adapter = adapter
+
+                if(idProd < prodotti.size)
+                    idProd = prodotti.size
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        database.child("Prodotti").addValueEventListener(postListener)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -61,5 +121,17 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+
+    override fun onItemClick(view: View, position: Int) {
+        var itemBefore = prodotti[position]
+        var itemAfter = prodotti[position]
+        itemAfter.isComprato = !itemAfter.isComprato
+
+        prodotti.remove(itemBefore)
+        prodotti.add(itemAfter)
+
+        prodotti.sortWith(compareBy({ it.nome }, { it.isComprato }))
+        adapter.notifyDataSetChanged()
     }
 }
